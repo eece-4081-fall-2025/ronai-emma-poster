@@ -1,1 +1,0 @@
-![JVM Memory Model](../img/jvm_memory_model.svg)

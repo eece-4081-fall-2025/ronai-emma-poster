@@ -1,1 +1,0 @@
-![Java Influence Tree](../img/influence_tree.png)

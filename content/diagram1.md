@@ -1,1 +1,0 @@
-![JVM Architecture](../img/java_vm_diagram.svg)

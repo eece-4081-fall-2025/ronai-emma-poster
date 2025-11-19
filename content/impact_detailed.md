@@ -1,1 +1,0 @@
-Impact detailed block
