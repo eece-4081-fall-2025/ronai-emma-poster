@@ -299,3 +299,12 @@ html, body {
 .s3-footnote {
     background: #ffffff !important;
 }
+
+
+
+.s2-context-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;   /* fill the card */
+    object-position: center;
+}
