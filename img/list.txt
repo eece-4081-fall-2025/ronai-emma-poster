@@ -1,0 +1,7 @@
+java_vm_diagram.svg
+jvm_memory_model.svg
+gosling_signature.png
+timeline_extended.png
+influence_tree.png
+context_photo1.png
+context_photo2.png

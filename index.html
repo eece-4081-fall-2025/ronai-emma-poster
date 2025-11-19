@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Gosling — Poster</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= SCREEN 1 ================= -->
+<div class="screen">
+  <div class="grid">
+
+    <!-- Portrait: HTML <img> only -->
+    <section class="card portrait">
+      <img src="portrait.jpg" alt="James Gosling Portrait">
+    </section>
+
+    <section class="card nameblock" data-md="content/nameblock.md"></section>
+    <section class="card biography" data-md="content/biography_short.md"></section>
+    <section class="card milestones" data-md="content/milestones.md"></section>
+    <section class="card impact" data-md="content/impact_short.md"></section>
+
+  </div>
+</div>
+
+
+<!-- ================= SCREEN 2 ================= -->
+<div class="screen">
+  <div class="grid">
+
+    <section class="card s2-extended-bio" data-md="content/biography_extended.md"></section>
+
+    <!-- Context Figure: image card -->
+    <section class="card s2-context-figure" data-img="img/context_photo1.jpg"></section>
+
+    <section class="card s2-timeline" data-md="content/timeline_extended.md"></section>
+    <section class="card s2-quote" data-md="content/quote.md"></section>
+    <section class="card s2-note" data-md="content/aux_note.md"></section>
+
+  </div>
+</div>
+
+
+<!-- ================= SCREEN 3 ================= -->
+<div class="screen">
+  <div class="grid">
+
+    <section class="card s3-techdeep" data-md="content/tech_deep.md"></section>
+
+    <!-- Diagram 1: image card -->
+    <section class="card s3-diagram1" data-img="img/java_vm_diagram.svg"></section>
+
+    <!-- Diagram 2: image card -->
+    <section class="card s3-diagram2" data-img="img/jvm_memory_model.svg"></section>
+
+    <section class="card s3-impact-detailed" data-md="content/impact_detailed.md"></section>
+    <section class="card s3-footnote" data-md="content/footnote.md"></section>
+
+  </div>
+</div>
+
+
+<!-- ================= SCREEN 4 ================= -->
+<div class="screen">
+  <div class="grid">
+
+    <section class="card s4-legacy" data-md="content/legacy.md"></section>
+
+    <!-- Influence tree: image card -->
+    <section class="card s4-influencetree" data-img="img/influence_tree.png"></section>
+
+    <section class="card s4-modernapps" data-md="content/modern_apps.md"></section>
+    <section class="card s4-why-matters" data-md="content/why_matters.md"></section>
+    <section class="card s4-references" data-md="content/references.md"></section>
+
+  </div>
+</div>
+
+
+<!-- ================= Loader Script ================= -->
+<script>
+/* ---------------------------------------------------------
+   Minimal Markdown → HTML converter (safe subset)
+   --------------------------------------------------------- */
+function mdToHtml(md) {
+    let html = md.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    html = html.replace(/^### (.*)$/gm, "<h3>$1</h3>");
+    html = html.replace(/^## (.*)$/gm, "<h2>$1</h2>");
+    html = html.replace(/^# (.*)$/gm, "<h1>$1</h1>");
+
+    html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+
+    html = html.replace(/^\s*[-•] (.*)$/gm, "<li>$1</li>");
+    html = html.replace(/(<li>[\s\S]*?<\/li>)/gm, "<ul>$1</ul>");
+
+    html = html.replace(/^(?!<h|<ul|<li|<\/ul|<\/li)(.+)$/gm, "<p>$1</p>");
+
+    return html;
+}
+
+/* ---------------------------------------------------------
+   Loader: handles BOTH Markdown and Image cards
+   data-md="file.md"
+   data-img="file.png"
+   --------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Load all Markdown cards
+    document.querySelectorAll("[data-md]").forEach(card => {
+        const url = card.getAttribute("data-md");
+
+        fetch(url)
+            .then(r => {
+                if (!r.ok) throw new Error(url);
+                return r.text();
+            })
+            .then(text => {
+                card.innerHTML = mdToHtml(text);
+            })
+            .catch(err => {
+                console.error("Markdown load error:", err);
+                card.innerHTML = "<p style='color:#a00;'>[Content load failed]</p>";
+            });
+    });
+
+    // Load all image-only cards
+    document.querySelectorAll("[data-img]").forEach(card => {
+        const imgPath = card.getAttribute("data-img");
+
+        const img = document.createElement("img");
+        img.src = imgPath;
+        img.alt = "Figure";
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "contain";
+
+        img.onerror = () => {
+            card.innerHTML = "<p style='color:#a00;'>[Image load failed]</p>";
+        };
+
+        card.appendChild(img);
+    });
+});
+</script>
+
+</body>
+</html>
