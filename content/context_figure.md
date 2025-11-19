@@ -1,0 +1,1 @@
+![Sun Workstation Context](../img/context_photo1.jpg)

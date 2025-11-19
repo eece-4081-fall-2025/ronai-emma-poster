@@ -1,0 +1,341 @@
+html, body {
+  margin: 0; padding: 0;
+  height: 100%;
+  font-family: system-ui, sans-serif;
+  line-height: 1.45;
+  background: #e2e2e2;
+}
+
+.screen {
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  padding: 1.6rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+/* --- Screen 1 --- */
+
+/* Portrait: full left side */
+.portrait {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 3;
+    padding: 0;
+}
+.portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Name block: large header area */
+.nameblock {
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 1;
+}
+
+/* Biography short: medium column block */
+.biography {
+    grid-column: 3 / span 2;
+    grid-row: 2 / span 1;
+    overflow-y: auto;
+}
+
+/* Milestones: narrower right block */
+.milestones {
+    grid-column: 5 / span 1;
+    grid-row: 2 / span 2;
+    overflow-y: auto;
+}
+
+/* Impact short: full-width bottom band */
+.impact {
+    grid-column: 3 / span 2;
+    grid-row: 3 / span 1;
+}
+
+
+/* Example for screen2 */
+.s2-extended-bio {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+}
+.s2-context-figure {
+  grid-column: 4 / span 2;
+  grid-row: 1 / span 1;
+}
+.s2-timeline {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 1;
+}
+.s2-quote {
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 1;
+}
+.s2-note {
+  grid-column: 3 / span 3;
+  grid-row: 3 / span 1;
+}
+
+/* --- Screen 3 --- */
+
+/* Large JVM deep technical explanation */
+.s3-techdeep {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 2;
+}
+
+/* JVM diagram 1 */
+.s3-diagram1 {
+    grid-column: 4 / span 2;
+    grid-row: 1 / span 1;
+}
+
+/* JVM diagram 2 */
+.s3-diagram2 {
+    grid-column: 4 / span 2;
+    grid-row: 2 / span 1;
+}
+
+/* Detailed impact analysis */
+.s3-impact-detailed {
+    grid-column: 1 / span 4;
+    grid-row: 3 / span 1;
+}
+
+/* Footnote or small detail block */
+.s3-footnote {
+    grid-column: 5 / span 1;
+    grid-row: 3 / span 1;
+}
+
+/* --- Screen 4 --- */
+
+/* Legacy overview (top-left) */
+.s4-legacy {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+/* Big influence tree diagram */
+.s4-influencetree {
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 2;
+}
+
+/* Modern applications block */
+.s4-modernapps {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+}
+
+/* Why it matters block */
+.s4-why-matters {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 1;
+}
+
+/* References block */
+.s4-references {
+    grid-column: 4 / span 2;
+    grid-row: 3 / span 1;
+}
+
+/* =========================================================
+   GLOBAL BACKGROUND — Web-1.0 inspired subtle pattern
+   ========================================================= */
+
+html, body {
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+        #d0d0d0;
+    background-size: 14px 14px;  /* small grid pattern */
+}
+
+/* =========================================================
+   IMAGE CARDS — unified style
+   ========================================================= */
+
+.card[data-img] {
+    background: #3c3c3c;               /* darker neutral gray */
+    padding: 0;                         /* remove padding so image fills card */
+    overflow: hidden;                   /* never scrollbars */
+    display: flex;                      /* center the image */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make images fit without scrollbars or distortion */
+.card[data-img] img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;                /* always fully visible */
+    object-position: center;
+    background: #2e2e2e;                /* backdrop behind transparent PNGs */
+}
+
+/* =========================================================
+   OPTIONAL: remove scrollbars for all cards (safe)
+   ========================================================= */
+.card {
+    scrollbar-width: none;              /* Firefox */
+}
+.card::-webkit-scrollbar {
+    display: none;                      /* Chrome/Safari */
+}
+
+/* =========================================================
+   OPTIONAL: subtle border change for image cards
+   ========================================================= */
+.card[data-img] {
+    border: 1px solid #666;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* =========================================================
+   FUN PERIOD-CORRECT 1995 WEB / SUN COLOR BACKGROUND
+   ========================================================= */
+
+html, body {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #f3f3f3 0px,
+            #f3f3f3 4px,
+            #e8e8e8 4px,
+            #e8e8e8 8px
+        ),
+        #fafafa;
+}
+
+
+/* =========================================================
+   VIBRANT CARD COLOR THEMES (applied by class)
+   Each category gets its own fun 90s tone.
+   ========================================================= */
+
+/* Screen 1: teal + sunset + sand */
+.nameblock      { background: #e1f7f5; }   /* soft teal */
+.biography      { background: #fff5e6; }   /* sand/beige */
+.milestones     { background: #ffe4d6; }   /* light coral */
+.impact         { background: #e6f0ff; }   /* pale blue */
+.portrait       { background: #23303a!important; }
+
+/* Screen 2: lavender + mint + light yellow */
+.s2-extended-bio { background: #f2e8ff; }  /* JavaSoft purple tint */
+.s2-context-figure { background: #23303a!important; }
+.s2-timeline    { background: #f7ffe1; }  /* pastel yellow */
+.s2-quote       { background: #e5ffe9; }  /* light mint */
+.s2-note        { background: #ffeef6; }  /* gentle rose */
+
+/* Screen 3: stronger primary colors */
+.s3-techdeep        { background: #f0f4ff; }  /* light Windows 95 blue */
+.s3-diagram1        { background: #243248!important; }
+.s3-diagram2        { background: #243248!important; }
+.s3-impact-detailed { background: #fef4e8; }  /* warm beige */
+.s3-footnote        { background: #e7f6ff; }  /* sky tint */
+
+/* Screen 4: CDE vibe: aqua + warm tan + lavender */
+.s4-legacy          { background: #e0fff8; }  /* aqua */
+.s4-influencetree   { background: #243248!important; }
+.s4-modernapps      { background: #fff4db; }  /* soft tan */
+.s4-why-matters     { background: #f0e6ff; }  /* lavender */
+.s4-references      { background: #e3f2ff; }  /* powder blue */
+
+
+/* =========================================================
+   RETRO 3D BEVELED CARD EDGES
+   (overrides earlier monochrome borders)
+   ========================================================= */
+
+.card {
+    border-radius: 0;
+    border: 2px solid #888;
+    border-top-color: #fff;
+    border-left-color: #fff;
+    border-right-color: #666;
+    border-bottom-color: #666;
+    box-shadow:
+        inset 0 0 3px rgba(0,0,0,0.15),
+        0 3px 6px rgba(0,0,0,0.25);
+}
+
+
+/* =========================================================
+   STYLED IMAGE CARDS WITH COLOR-TINTED BEZELS
+   ========================================================= */
+
+.card[data-img] {
+    padding: 0;
+    overflow: hidden;
+
+    /* CRT bezel darkened navy */
+    background: #243248;
+
+    /* tinted 3D bezel for images */
+    border: 2px solid #4a5a78;
+    border-top-color: #8fa3c0;
+    border-left-color: #8fa3c0;
+    border-right-color: #1b2634;
+    border-bottom-color: #1b2634;
+
+    box-shadow:
+        inset 0 0 10px rgba(0,0,0,0.55),
+        0 3px 6px rgba(0,0,0,0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card[data-img] img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   PORTRAIT: match image panels with mild tint
+   ========================================================= */
+
+.portrait {
+    padding: 0;
+    overflow: hidden;
+    background: #23303a !important;
+
+    border: 2px solid #4a5a78;
+    border-top-color: #8fa3c0;
+    border-left-color: #8fa3c0;
+    border-right-color: #1b2634;
+    border-bottom-color: #1b2634;
+
+    box-shadow:
+        inset 0 0 10px rgba(0,0,0,0.55),
+        0 3px 6px rgba(0,0,0,0.4);
+}
+
+.portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
