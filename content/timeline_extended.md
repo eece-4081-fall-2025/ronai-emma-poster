@@ -1,7 +1,5 @@
 # Extended Timeline
 
-![Timeline](../img/timeline.png)
-
 - 1955: Born in Calgary, Alberta.  
 - 1970s: Built early computing projects and learned systems programming.  
 - 1977: Completed BSc in Computer Science.  
